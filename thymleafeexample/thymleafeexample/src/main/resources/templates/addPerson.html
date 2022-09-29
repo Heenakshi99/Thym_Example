@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html">
+
+<body>
+<h1>Add person</h1>
+
+<form action="#" th:action="@{/addNewPerson}" th:object="${employee}" method="POST">
+
+    Enter First Name: <input type="text" th:field="*{fname}" placeholder="Employee First Name" required></br>
+    Enter Last Name :<input type="text" th:field="*{lname}" placeholder="Employee Last Name" required></br>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

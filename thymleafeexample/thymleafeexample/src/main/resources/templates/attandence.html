@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<h1>Attandence management System</h1>
+<!--<form action="#" th:action="@{/addNewPerson}" th:object="${employee}" method="POST">-->
+
+Enter First Name: <input type="text" id="fname" required><br><br>
+Enter Last Name :<input type="text" id="lname" required><br><br>
+
+<select name="cars" id="attandence">
+    <option value="Present">Present</option>
+    <option value="Absent">Absent</option>
+</select>
+<br><br>
+<input type="button" value="Submit" onclick="attandence_Submit()">
+
+
+<script>
+    function attandence_Submit(){
+     var fname = $("#fname").val();
+      var lname = $("#lname").val();
+      var attandence = $("#attandence").val();
+      if(fname == ''){
+          alert("Please  enter first name");
+        window.location.href = "/attandence";
+      }else{
+            //document.getElementById("lname").value = lname;
+      }
+       if(lname == ''){
+        alert("Please  enter Last name");
+        window.location.href = "/attandence";
+      }else{
+        //document.getElementById("fname").value = fname;
+
+      }
+        var attandence = {
+            "fname": fname,
+            "lname": lname,
+            "attandence": attandence
+    }
+     console.log(fname);
+        $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/attandence/data",
+        data: JSON.stringify(attandence),
+        dataType: 'json',
+        cache: false,
+        timeout: 600000,
+        success: function (data) {
+            alert("success");
+        },
+        error: function (e) {
+            //alert(e);
+        }
+    });
+
+    }
+
+
+</script>
+</body>
+</html>
